@@ -1,5 +1,7 @@
-package com.Auctionz.Auctionz.Entity;
+package com.Auctionz.Auctionz.Schemas;
 
+import com.Auctionz.Auctionz.Entity.auctioneerEntity;
+import com.Auctionz.Auctionz.Entity.bidderEntity;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -11,25 +13,18 @@ import org.springframework.format.annotation.NumberFormat;
 
 import java.util.Set;
 
-@Entity
 @Valid
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="productDetails")
-public class productEntity
+public class productInput
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
     @NotNull
     @Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
     private String productName;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name="auctionedBy",referencedColumnName = "id",insertable = false,updatable = false)
-    private auctioneerEntity auctioneerEntityObj;
+    @NotNull
+    private int auctionedBy;
 
     @NotNull
     private String productCategory;
@@ -40,6 +35,4 @@ public class productEntity
     @NotNull
     private String shortDescription;
 
-    @ManyToMany(mappedBy = "productEntitySet",cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
-    private Set<bidderEntity> bidderEntitySet;
 }

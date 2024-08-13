@@ -1,18 +1,16 @@
-package com.Auctionz.Auctionz.Entity;
+package com.Auctionz.Auctionz.Schemas;
 
-import jakarta.persistence.Entity;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Builder
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class biddersEntity
+@Data
+@Valid
+public class biddersInput
 {
     @NotNull
     private int bidderId;
