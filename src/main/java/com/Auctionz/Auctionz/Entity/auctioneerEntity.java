@@ -1,5 +1,6 @@
 package com.Auctionz.Auctionz.Entity;
 
+import com.Auctionz.Auctionz.Schemas.auctioneerInput;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -32,7 +33,7 @@ public class auctioneerEntity
     private String lastName;
 
     @NotNull
-    private int phone;
+    private Long phone;
 
     @NotNull
     @Email
@@ -56,4 +57,16 @@ public class auctioneerEntity
     private int code;
 
     private boolean blocked=false;
+
+    public auctioneerEntity(auctioneerInput auctioneerInputObj)
+    {
+        this.firstName=auctioneerInputObj.getFirstName();
+        this.lastName=auctioneerInputObj.getLastName();
+        this.city=auctioneerInputObj.getCity();
+        this.email=auctioneerInputObj.getEmail();
+        this.code=Integer.parseInt(auctioneerInputObj.getCode());
+        this.country=auctioneerInputObj.getCountry();
+        this.state=auctioneerInputObj.getState();
+        this.phone=Long.parseLong(auctioneerInputObj.getPhone());
+    }
 }

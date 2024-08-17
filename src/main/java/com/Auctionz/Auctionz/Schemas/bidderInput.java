@@ -24,7 +24,7 @@ public class bidderInput
     private String lastName;
 
     @NotNull
-    private int phone;
+    private String phone;
 
     @Email
     private String email;
@@ -42,5 +42,5 @@ public class bidderInput
     private String city;
 
     @NotNull
-    private int code;
+    private String code;
 }

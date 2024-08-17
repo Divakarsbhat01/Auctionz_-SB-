@@ -1,5 +1,7 @@
 package com.Auctionz.Auctionz.Entity;
 
+import com.Auctionz.Auctionz.Schemas.auctioneerInput;
+import com.Auctionz.Auctionz.Schemas.bidderInput;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -33,7 +35,7 @@ public class bidderEntity
     private String lastName;
 
     @NotNull
-    private int phone;
+    private Long phone;
 
     @NotNull
     @Email
@@ -63,4 +65,16 @@ public class bidderEntity
     joinColumns = @JoinColumn(name="bId"),
     inverseJoinColumns = @JoinColumn(name="pId"))
     private Set<productEntity> productEntitySet;
+
+    public bidderEntity(bidderInput bidderInputObj)
+    {
+        this.firstName=bidderInputObj.getFirstName();
+        this.lastName=bidderInputObj.getLastName();
+        this.city=bidderInputObj.getCity();
+        this.email=bidderInputObj.getEmail();
+        this.code=Integer.parseInt(bidderInputObj.getCode());
+        this.country=bidderInputObj.getCountry();
+        this.state=bidderInputObj.getState();
+        this.phone=Long.parseLong(bidderInputObj.getPhone());
+    }
 }
